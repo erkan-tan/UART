@@ -26,7 +26,8 @@ public:
     virtual void deactivate();
 
     virtual ~Screen1Presenter() {};
-    virtual void displayBuffer(uint8_t* buffer);
+    virtual void displayBuffer(DataTypeDef* buffer);
+    virtual void displayBufferT(uint8_t msg[]);
 
 private:
     Screen1Presenter();

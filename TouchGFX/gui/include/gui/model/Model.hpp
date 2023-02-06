@@ -1,6 +1,13 @@
 #ifndef MODEL_HPP
 #define MODEL_HPP
 
+#ifndef SIMULATOR
+
+#include <cmsis_os2.h>
+#include "main.h"
+
+#endif
+
 class ModelListener;
 
 class Model

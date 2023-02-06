@@ -97,6 +97,10 @@ const osThreadAttr_t myTask03_attributes = {
     .stack_size = 128 * 4,
     .priority = (osPriority_t)osPriorityLow,
 };
+/* Definitions for myMsgQueue */
+osMessageQueueId_t myMsgQueueHandle;
+const osMessageQueueAttr_t myMsgQueue_attributes = {
+    .name = "myMsgQueue"};
 /* USER CODE BEGIN PV */
 uint8_t aTxBuffer[] = "Man conquers the world by conquering himself.\r\n";
 /* Buffer used for reception */
@@ -105,6 +109,17 @@ volatile uint8_t buttonFlag = 0;
 volatile uint8_t ledFlag = 0;
 volatile char serRxData[20];
 volatile uint8_t isRxData = 0;
+
+uint8_t messageReceived = 0;
+// uint8_t messageReady = 0;
+
+uint8_t uartMsgBuf[RXBUFFERSIZE];
+uint8_t uartMsgData[2];
+uint8_t msgIndex = 0;
+uint8_t msgRdyFlag = 0;
+
+
+DataTypeDef DataToSend = {'a', 2};
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -204,6 +219,10 @@ int main(void)
   GUI_TaskHandle = osThreadNew(TouchGFX_Task, NULL, &GUI_Task_attributes);
   /* creation of myTask */
   myTask03Handle = osThreadNew(StartTask03, NULL, &myTask03_attributes);
+
+  /* Create the queue(s) */
+  /* creation of myQueue01 */
+  myMsgQueueHandle = osMessageQueueNew(16, sizeof(uartMsgBuf), &myMsgQueue_attributes);
   /* USER CODE END 2 */
 
   /* Init scheduler */
@@ -660,25 +679,46 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
-  if (aRxBuffer[0] == 'g')
+
+  if (msgIndex == 0)
   {
-    ledFlag = 1;
+    memset(&uartMsgBuf, 0, sizeof(uartMsgBuf));
   }
-  else if (aRxBuffer[0] == 'r')
+  if (uartMsgData[0] != 13)
   {
-    ledFlag = 0;
+    uartMsgBuf[msgIndex++] = uartMsgData[0];
   }
-  __NOP();
+  else
+  {
+    uartMsgBuf[msgIndex] = '\0';
+    msgIndex = 0;
+    msgRdyFlag = 1;
+
+    HAL_GPIO_TogglePin(GPIOG, GPIO_PIN_14);
+
+    // if (uartMsgBuf[1] == 'g')
+    // {
+    //   ledFlag = 1;
+    // }
+    // else if (uartMsgBuf[1] == 'r')
+    // {
+    //   ledFlag = 0;
+    // }
+  }
+
+  // if (message[RXBUFFERSIZE - 1] = 'B')
+  // {
+  //   ledFlag = 1;
+  // }
 
   // HAL_UART_Receive_IT(&huart1, (uint8_t *)serRxData, 5);
   // HAL_UART_Receive_IT(&huart1, (uint8_t *)aRxBuffer, RXBUFFERSIZE);
+  // __NOP();
 
-  if (HAL_UART_Receive_IT(&huart1, (uint8_t *)aRxBuffer, RXBUFFERSIZE) != HAL_OK)
+  if (HAL_UART_Receive_IT(&huart1, (uint8_t *)uartMsgData, 1) != HAL_OK)
   {
     Error_Handler();
   }
-
-  isRxData = 1;
 }
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
@@ -1051,18 +1091,26 @@ void StartTask03(void *argument)
   /* USER CODE BEGIN StartTask03 */
   // HAL_UART_Receive_IT(&huart1, (uint8_t *)serRxData, 5);
   // HAL_UART_Receive_IT(&huart1, (uint8_t *)aRxBuffer, RXBUFFERSIZE);
-  if (HAL_UART_Receive_IT(&huart1, (uint8_t *)aRxBuffer, RXBUFFERSIZE) != HAL_OK)
+  if (HAL_UART_Receive_IT(&huart1, (uint8_t *)uartMsgData, 1) != HAL_OK)
   {
     Error_Handler();
   }
   /* Infinite loop */
   for (;;)
   {
-    if (ledFlag)
+    if (msgRdyFlag)
     {
-      HAL_GPIO_TogglePin(GPIOG, GPIO_PIN_14);
+      // Task_action('s');
+      osMessageQueuePut(myMsgQueueHandle, &uartMsgBuf, osPriorityLow, 0);
+      // osMessageQueuePut(myMsgQueueHandle, &DataToSend, osPriorityLow, 0U);
+      msgRdyFlag = 0;
     }
-    osDelay(500);
+
+    // if (ledFlag)
+    // {
+    //   HAL_GPIO_TogglePin(GPIOG, GPIO_PIN_14);
+    // }
+    osDelay(10);
   }
   /* USER CODE END StartTask03 */
 }

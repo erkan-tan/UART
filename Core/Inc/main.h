@@ -57,7 +57,7 @@ void Error_Handler(void);
 /* Size of Transmission buffer */
 #define TXBUFFERSIZE                      (COUNTOF(aTxBuffer) - 1)
 /* Size of Reception buffer */
-#define RXBUFFERSIZE                      10
+#define RXBUFFERSIZE                      16
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
@@ -75,12 +75,16 @@ void Error_Handler(void);
 
 /* USER CODE BEGIN Private defines */
 
-typedef struct{
-  uint8_t userID;
-  uint8_t userPass;
-  uint16_t userData;
-}UserTypeDef;
+// typedef struct{
+//   uint8_t userID;
+//   uint8_t userPass;
+//   uint16_t userData;
+// }UserTypeDef;
 
+typedef struct{
+  uint8_t Value;
+  uint8_t Source;
+} DataTypeDef;
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

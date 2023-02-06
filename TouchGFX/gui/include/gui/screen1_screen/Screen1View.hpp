@@ -11,7 +11,8 @@ public:
     virtual ~Screen1View() {}
     virtual void setupScreen();
     virtual void tearDownScreen();
-    virtual void displayBuffer(uint8_t* buffer);
+    virtual void displayBuffer(DataTypeDef* buffer);
+    virtual void displayBufferT(uint8_t msg[]);
     virtual void buttonClicked();
 
 protected:

@@ -13,9 +13,9 @@ Screen1ViewBase::Screen1ViewBase() :
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     add(__background);
 
-    box1.setPosition(0, 0, 240, 320);
-    box1.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    add(box1);
+    bg.setPosition(0, 0, 240, 320);
+    bg.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    add(bg);
 
     image1.setXY(0, 0);
     image1.setBitmap(touchgfx::Bitmap(BITMAP_DARK_THEME_IMAGES_BACKGROUNDS_320X240_STONE_ID));
@@ -26,10 +26,10 @@ Screen1ViewBase::Screen1ViewBase() :
     button1.setAction(buttonCallback);
     add(button1);
 
-    box2.setPosition(0, 34, 320, 50);
-    box2.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    box2.setAlpha(100);
-    add(box2);
+    box1.setPosition(0, 34, 320, 50);
+    box1.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    box1.setAlpha(100);
+    add(box1);
 
     textArea1.setPosition(35, 46, 250, 27);
     textArea1.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
@@ -38,6 +38,27 @@ Screen1ViewBase::Screen1ViewBase() :
     textArea1.setWildcard(textArea1Buffer);
     textArea1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_Z81X));
     add(textArea1);
+
+    textArea2.setPosition(35, 107, 250, 27);
+    textArea2.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    textArea2.setLinespacing(0);
+    textArea2Buffer[0] = 0;
+    textArea2.setWildcard(textArea2Buffer);
+    textArea2.setTypedText(touchgfx::TypedText(T___SINGLEUSE_MF9P));
+    add(textArea2);
+
+    textArea3.setPosition(35, 147, 250, 27);
+    textArea3.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    textArea3.setLinespacing(0);
+    textArea3Buffer[0] = 0;
+    textArea3.setWildcard(textArea3Buffer);
+    textArea3.setTypedText(touchgfx::TypedText(T___SINGLEUSE_NYM7));
+    add(textArea3);
+
+    box2.setPosition(0, 95, 320, 50);
+    box2.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    box2.setAlpha(100);
+    add(box2);
 }
 
 Screen1ViewBase::~Screen1ViewBase()

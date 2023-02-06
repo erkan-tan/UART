@@ -17,7 +17,12 @@ void Screen1Presenter::deactivate()
 
 }
 
-void Screen1Presenter::displayBuffer(uint8_t* buffer)
+void Screen1Presenter::displayBuffer(DataTypeDef* buffer)
 {
     view.displayBuffer(buffer);
+}
+
+void Screen1Presenter::displayBufferT(uint8_t msg[])
+{
+    view.displayBufferT(msg);
 }

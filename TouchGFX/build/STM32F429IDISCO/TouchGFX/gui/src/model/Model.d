@@ -1,9 +1,6 @@
 TouchGFX/build/STM32F429IDISCO/TouchGFX/gui/src/model/Model.o: \
  TouchGFX/gui/src/model/Model.cpp \
  TouchGFX/gui/include/gui/model/Model.hpp \
- TouchGFX/gui/include/gui/model/ModelListener.hpp \
- Middlewares/ST/touchgfx/framework/include/touchgfx/hal/Types.hpp \
- Middlewares/ST/touchgfx/framework/include/touchgfx/hal/Config.hpp \
  Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h \
  Core/Inc/main.h Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  Core/Inc/stm32f4xx_hal_conf.h \
@@ -39,15 +36,12 @@ TouchGFX/build/STM32F429IDISCO/TouchGFX/gui/src/model/Model.o: \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
- Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
+ Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
+ TouchGFX/gui/include/gui/model/ModelListener.hpp \
+ Middlewares/ST/touchgfx/framework/include/touchgfx/hal/Types.hpp \
+ Middlewares/ST/touchgfx/framework/include/touchgfx/hal/Config.hpp
 
 TouchGFX/gui/include/gui/model/Model.hpp:
-
-TouchGFX/gui/include/gui/model/ModelListener.hpp:
-
-Middlewares/ST/touchgfx/framework/include/touchgfx/hal/Types.hpp:
-
-Middlewares/ST/touchgfx/framework/include/touchgfx/hal/Config.hpp:
 
 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h:
 
@@ -126,3 +120,9 @@ Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h:
 Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h:
 
 Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
+
+TouchGFX/gui/include/gui/model/ModelListener.hpp:
+
+Middlewares/ST/touchgfx/framework/include/touchgfx/hal/Types.hpp:
+
+Middlewares/ST/touchgfx/framework/include/touchgfx/hal/Config.hpp:
