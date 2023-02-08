@@ -31,7 +31,7 @@ Screen1ViewBase::Screen1ViewBase() :
     box1.setAlpha(100);
     add(box1);
 
-    textArea1.setPosition(35, 17, 250, 27);
+    textArea1.setPosition(10, 14, 300, 27);
     textArea1.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     textArea1.setLinespacing(0);
     textArea1Buffer[0] = 0;
@@ -44,7 +44,7 @@ Screen1ViewBase::Screen1ViewBase() :
     box2.setAlpha(100);
     add(box2);
 
-    textArea2.setPosition(35, 72, 250, 27);
+    textArea2.setPosition(10, 69, 300, 27);
     textArea2.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     textArea2.setLinespacing(0);
     textArea2Buffer[0] = 0;
