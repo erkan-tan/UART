@@ -10,8 +10,8 @@ public:
     ModelListener() : model(0) {}
     
     virtual ~ModelListener() {}
-    virtual void displayBuffer(DataTypeDef* buffer) {}
-    virtual void displayBufferT(uint8_t msg[]) {}
+    
+    virtual void displayMsg(uint8_t msg[]) {}
 
     void bind(Model* m)
     {

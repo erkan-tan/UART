@@ -75,16 +75,6 @@ void Error_Handler(void);
 
 /* USER CODE BEGIN Private defines */
 
-// typedef struct{
-//   uint8_t userID;
-//   uint8_t userPass;
-//   uint16_t userData;
-// }UserTypeDef;
-
-typedef struct{
-  uint8_t Value;
-  uint8_t Source;
-} DataTypeDef;
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

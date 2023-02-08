@@ -21,17 +21,17 @@ Screen1ViewBase::Screen1ViewBase() :
     image1.setBitmap(touchgfx::Bitmap(BITMAP_DARK_THEME_IMAGES_BACKGROUNDS_320X240_STONE_ID));
     add(image1);
 
-    button1.setXY(73, 173);
+    button1.setXY(73, 186);
     button1.setBitmaps(touchgfx::Bitmap(BITMAP_ALTERNATE_THEME_IMAGES_WIDGETS_BUTTON_REGULAR_HEIGHT_50_SMALL_ROUNDED_ACTION_ID), touchgfx::Bitmap(BITMAP_ALTERNATE_THEME_IMAGES_WIDGETS_BUTTON_REGULAR_HEIGHT_50_SMALL_ROUNDED_PRESSED_ID));
     button1.setAction(buttonCallback);
     add(button1);
 
-    box1.setPosition(0, 34, 320, 50);
+    box1.setPosition(0, 5, 320, 50);
     box1.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     box1.setAlpha(100);
     add(box1);
 
-    textArea1.setPosition(35, 46, 250, 27);
+    textArea1.setPosition(35, 17, 250, 27);
     textArea1.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     textArea1.setLinespacing(0);
     textArea1Buffer[0] = 0;
@@ -39,7 +39,12 @@ Screen1ViewBase::Screen1ViewBase() :
     textArea1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_Z81X));
     add(textArea1);
 
-    textArea2.setPosition(35, 107, 250, 27);
+    box2.setPosition(0, 60, 320, 50);
+    box2.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    box2.setAlpha(100);
+    add(box2);
+
+    textArea2.setPosition(35, 72, 250, 27);
     textArea2.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     textArea2.setLinespacing(0);
     textArea2Buffer[0] = 0;
@@ -47,18 +52,13 @@ Screen1ViewBase::Screen1ViewBase() :
     textArea2.setTypedText(touchgfx::TypedText(T___SINGLEUSE_MF9P));
     add(textArea2);
 
-    textArea3.setPosition(35, 147, 250, 27);
+    textArea3.setPosition(10, 120, 300, 64);
     textArea3.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     textArea3.setLinespacing(0);
     textArea3Buffer[0] = 0;
     textArea3.setWildcard(textArea3Buffer);
     textArea3.setTypedText(touchgfx::TypedText(T___SINGLEUSE_NYM7));
     add(textArea3);
-
-    box2.setPosition(0, 95, 320, 50);
-    box2.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    box2.setAlpha(100);
-    add(box2);
 }
 
 Screen1ViewBase::~Screen1ViewBase()

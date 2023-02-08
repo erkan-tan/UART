@@ -41,9 +41,9 @@ protected:
     touchgfx::Button button1;
     touchgfx::Box box1;
     touchgfx::TextAreaWithOneWildcard textArea1;
+    touchgfx::Box box2;
     touchgfx::TextAreaWithOneWildcard textArea2;
     touchgfx::TextAreaWithOneWildcard textArea3;
-    touchgfx::Box box2;
 
     /*
      * Wildcard Buffers
@@ -52,7 +52,7 @@ protected:
     touchgfx::Unicode::UnicodeChar textArea1Buffer[TEXTAREA1_SIZE];
     static const uint16_t TEXTAREA2_SIZE = 17;
     touchgfx::Unicode::UnicodeChar textArea2Buffer[TEXTAREA2_SIZE];
-    static const uint16_t TEXTAREA3_SIZE = 17;
+    static const uint16_t TEXTAREA3_SIZE = 50;
     touchgfx::Unicode::UnicodeChar textArea3Buffer[TEXTAREA3_SIZE];
 
 private:
